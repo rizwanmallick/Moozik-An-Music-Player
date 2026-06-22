@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Moozik Room</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/css/chat.css">
+</head>
+<body class="chat-page">
+  <header class="app-header">
+    <a href="/" class="logo">Moozik</a>
+    <nav class="navigation">
+      <a href="/">Home</a>
+      <a href="/chat/lobby">Rooms</a>
+    </nav>
+    <div class="room-info-bar">
+      <span class="room-label">Room</span>
+      <span class="room-code" id="roomCodeDisplay">------</span>
+      <button id="copyRoomCodeBtn" class="icon-btn" title="Copy room code"><i class="fas fa-copy"></i></button>
+      <a href="/chat/lobby" class="icon-btn leave-btn" title="Leave room"><i class="fas fa-sign-out-alt"></i></a>
+    </div>
+  </header>
+
+  <div class="chatbox-main">
+    <div class="chatbox-left">
+      <div class="music-player-card">
+        <div class="player-art-wrap">
+          <img id="musicImg" src="https://source.unsplash.com/Qrspubmx6kE/640x360" alt="Track Art" class="music-art">
+          <div class="art-overlay"><i class="fas fa-music"></i></div>
+        </div>
+        <div class="music-info">
+          <div class="music-title" id="musicTitle">No track playing</div>
+          <div class="music-status" id="musicStatus">Search a song to add to queue</div>
+          <div class="now-playing-by" id="nowPlayingBy" hidden></div>
+        </div>
+        <audio id="musicPlayer" controls autoplay></audio>
+        <div class="music-controls">
+          <input type="range" id="musicSeek" min="0" value="0" step="1">
+          <div class="music-time">
+            <span id="musicCurrent">0:00</span>
+            <span id="musicDuration">0:00</span>
+          </div>
+        </div>
+        <div class="player-actions">
+          <button id="voteSkipBtn" class="skip-btn" disabled>
+            <i class="fas fa-forward"></i> Skip <span id="skipVoteLabel">(0/0)</span>
+          </button>
+          <button id="hostSkipBtn" class="skip-btn host-skip" hidden title="Host instant skip">
+            <i class="fas fa-crown"></i> Host Skip
+          </button>
+        </div>
+      </div>
+
+      <div class="search-panel">
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input type="text" id="songSearchInput" placeholder="Search songs to add to queue..." autocomplete="off">
+        </div>
+        <div id="searchResults" class="search-results" hidden></div>
+      </div>
+
+      <div class="queue-panel">
+        <div class="queue-header">
+          <h3><i class="fas fa-list-ul"></i> Up Next</h3>
+          <span id="queueCount" class="queue-count">0 songs</span>
+        </div>
+        <ul id="queueList" class="queue-list">
+          <li class="queue-empty">Queue is empty — search and add a song!</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="chatbox-right">
+      <div class="chat-header">
+        <span class="chat-title"><i class="fas fa-comment-dots"></i> Live Chat</span>
+        <div class="chat-actions">
+          <div class="online-users-counter">
+            <i class="fas fa-users"></i>
+            <span id="onlineCount">0</span>/5 online
+          </div>
+          <div id="currentUserChip" class="user-chip">
+            <span class="user-avatar" id="currentUserAvatar">U</span>
+            <span class="user-name" id="currentUserName">You</span>
+          </div>
+          <button id="themeToggle" class="icon-btn" title="Toggle theme"><i class="fas fa-sun"></i></button>
+        </div>
+      </div>
+
+      <div class="chat-container">
+        <div class="chat-messages" id="chatArea">
+          <div class="chat-welcome">
+            <i class="fas fa-headphones-alt"></i>
+            <p>Welcome! Search for songs to build a shared queue. Everyone sees the same list in real time.</p>
+          </div>
+        </div>
+        <div class="online-users-sidebar">
+          <div class="online-users-header"><i class="fas fa-circle"></i> In This Room</div>
+          <div class="online-users-list"></div>
+        </div>
+      </div>
+
+      <form class="chat-inputarea" id="chatForm">
+        <input type="text" class="chat-input" placeholder="Chat with the room..." id="messageInput" autocomplete="off">
+        <button type="submit" class="chat-send-btn"><i class="fas fa-paper-plane"></i></button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+  <script src="/js/chat.js"></script>
+</body>
+</html>

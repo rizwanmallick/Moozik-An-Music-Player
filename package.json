@@ -1,0 +1,28 @@
+{
+  "name": "moozik",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon -L app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@supabase/node-fetch": "^2.6.15",
+    "@supabase/supabase-js": "^1.35.7",
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.5.0",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.3",
+    "node-fetch": "^2.7.0",
+    "nodemon": "^3.1.9",
+    "socket.io": "^4.7.5",
+    "socket.io-client": "^4.7.5",
+    "yt-search": "^2.13.1"
+  }
+}
